@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Mixpanel
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let mixpanel = Mixpanel.sharedInstanceWithToken("d68f4c0001cb2c5a50b527ad79764baf")
+
         return true
     }
 

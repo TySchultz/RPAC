@@ -1,0 +1,34 @@
+PODS:
+  - EasyAnimation (1.0.5)
+  - Kanna (1.0.6)
+  - Mixpanel (2.9.9):
+    - Mixpanel/Mixpanel (= 2.9.9)
+  - Mixpanel/Mixpanel (2.9.9)
+  - Realm (1.0.1):
+    - Realm/Headers (= 1.0.1)
+  - Realm/Headers (1.0.1)
+  - RealmSwift (1.0.1):
+    - Realm (= 1.0.1)
+  - SwiftDate (3.0.8)
+  - SwiftMoment (0.5.1)
+
+DEPENDENCIES:
+  - EasyAnimation
+  - Kanna
+  - Mixpanel
+  - RealmSwift
+  - SwiftDate
+  - SwiftMoment
+
+SPEC CHECKSUMS:
+  EasyAnimation: 32821f37dd39187e7364369a3d8f65d38405cf1d
+  Kanna: 9f30945bbd293a609f698ea164687ccc0990ff60
+  Mixpanel: 818d1940c2d9402453b349545022a86968097f57
+  Realm: 2e15e39d35b08abb529e212ed5d8af107b5236c8
+  RealmSwift: d73ea2af08c3676dbdd5e4b669651a0f492162a4
+  SwiftDate: 971f8b9394f664f2226b9c3ab64e801a7291c612
+  SwiftMoment: 469c0734b5d4d6631a15a91f8093cf436c3cbb7c
+
+PODFILE CHECKSUM: de9167b1df67a0c27829f6556385f06da7d6445e
+
+COCOAPODS: 1.0.1
