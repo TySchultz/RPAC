@@ -13,20 +13,16 @@ class TableViewController: UITableViewController {
 
     var events : [Event]!
     
-    @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var headerTitle: UILabel!
     var headerText = ""
     var showing = false
     var dismissing = false
     
-    @IBOutlet weak var closeLineWidth: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
-        headerTitle.text = headerText
-        
-        closeLineWidth.constant = self.view.frame.width
+        self.navigationController?.navigationBarHidden = false
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,8 +34,13 @@ class TableViewController: UITableViewController {
         super.viewDidAppear(true)
         showing = true
         tableView.reloadData()
+        self.navigationController?.navigationBarHidden = false
     }
 
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+            self.navigationController?.navigationBarHidden = true
+    }
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -56,10 +57,7 @@ class TableViewController: UITableViewController {
         return events.count
     }
 
-    @IBAction func closeController(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> TableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TableViewCell
 
@@ -67,48 +65,27 @@ class TableViewController: UITableViewController {
         cell.timeLabel.text = event.time
         cell.activityLabel.text = event.activity
         cell.locationLabel.text = event.location
+        
+        
 
         if event.activity.containsString("Basketball"){
-            cell.stackColorBackground.backgroundColor = UIColor(red:0.10, green:0.65, blue:0.61, alpha:1.00)
-            cell.activityLabel.textColor = UIColor.whiteColor()
-            cell.timeLabel.textColor = UIColor.whiteColor()
-            cell.locationLabel.textColor = UIColor.whiteColor()
+            cell.courtImage.image = cell.selectCourtImage(event.location)
+            cell.spaceBetween.constant = 8
+
+//            cell.activityLabel.textColor = UIColor(red:0.95, green:0.51, blue:0.23, alpha:1.00)
         }else{
-            cell.stackColorBackground.backgroundColor = UIColor.whiteColor()
-            cell.activityLabel.textColor = UIColor.blackColor()
-            cell.timeLabel.textColor = UIColor.blackColor()
-            cell.locationLabel.textColor = UIColor.blackColor()
+            cell.courtImage.image = nil
+            cell.spaceBetween.constant = -64
+            cell.needsUpdateConstraints()
+//            cell.activityLabel.textColor = UIColor.blackColor()
 
         }
-        
         return cell
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
             return 100.0
     }
-    
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
-        let offset = scrollView.contentOffset.y
-        print(offset)
-        var frame = headerView.frame
-        frame.origin.y = offset
-        headerView.frame = frame
-        
-        if offset < -120 && !dismissing{
-            dismissing = true
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }
-        
-        if offset < 0 {
-            closeLineWidth.constant =  self.view.frame.width + ((offset/120) * self.view.frame.width)
-        }else{
-            closeLineWidth.constant = self.view.frame.width
-        }
-    }
-    
-
-
 }
 
 

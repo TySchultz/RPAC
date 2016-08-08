@@ -21,12 +21,12 @@
 		10BBE08E1D1DC6EB000838D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10BBE08D1D1DC6EB000838D8 /* Assets.xcassets */; };
 		10BBE0911D1DC6EB000838D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10BBE08F1D1DC6EB000838D8 /* LaunchScreen.storyboard */; };
 		10E1102A1D21D57200C19201 /* CourtKeyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E110291D21D57200C19201 /* CourtKeyTableViewController.swift */; };
-		10E1102C1D21D58100C19201 /* CheckInTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1102B1D21D58100C19201 /* CheckInTableViewController.swift */; };
 		10E110321D21DB1900C19201 /* CourtKeyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E110311D21DB1900C19201 /* CourtKeyTableViewCell.swift */; };
 		1F33F9FC7F5E2595B4246CAD /* Pods_RPAC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31D262B43DEF7DAECBDB1DCD /* Pods_RPAC.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		102012241D3A8F3F0055841B /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		1078E0E31D1F08EE00538049 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		1078E0E51D1F090800538049 /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 		108DAC741D1F249B00242A08 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -43,7 +43,6 @@
 		10BBE0901D1DC6EB000838D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10BBE0921D1DC6EB000838D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10E110291D21D57200C19201 /* CourtKeyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourtKeyTableViewController.swift; sourceTree = "<group>"; };
-		10E1102B1D21D58100C19201 /* CheckInTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckInTableViewController.swift; sourceTree = "<group>"; };
 		10E110311D21DB1900C19201 /* CourtKeyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourtKeyTableViewCell.swift; sourceTree = "<group>"; };
 		10E110351D24C5A600C19201 /* RPAC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RPAC-Bridging-Header.h"; sourceTree = "<group>"; };
 		31D262B43DEF7DAECBDB1DCD /* Pods_RPAC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RPAC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +92,7 @@
 				10E1102E1D21D59B00C19201 /* CustomViews */,
 				1078E0E51D1F090800538049 /* Downloader.swift */,
 				10E110351D24C5A600C19201 /* RPAC-Bridging-Header.h */,
+				102012241D3A8F3F0055841B /* Constants.h */,
 			);
 			path = RPAC;
 			sourceTree = "<group>";
@@ -103,7 +103,6 @@
 				1078E0E31D1F08EE00538049 /* TableViewController.swift */,
 				108DAC761D1F282C00242A08 /* BuildingTableViewController.swift */,
 				10E110291D21D57200C19201 /* CourtKeyTableViewController.swift */,
-				10E1102B1D21D58100C19201 /* CheckInTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -174,6 +173,7 @@
 				TargetAttributes = {
 					10BBE0821D1DC6EB000838D8 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 6B6QHT3AN6;
 					};
 				};
 			};
@@ -268,7 +268,6 @@
 				108DAC751D1F249B00242A08 /* TableViewCell.swift in Sources */,
 				108DAC771D1F282C00242A08 /* BuildingTableViewController.swift in Sources */,
 				108DAC7B1D205CB800242A08 /* HeaderTableViewCell.swift in Sources */,
-				10E1102C1D21D58100C19201 /* CheckInTableViewController.swift in Sources */,
 				108DAC811D20E19600242A08 /* TSButton.swift in Sources */,
 				10E1102A1D21D57200C19201 /* CourtKeyTableViewController.swift in Sources */,
 				108DAC791D1F28A400242A08 /* BuildingCell.swift in Sources */,
@@ -388,13 +387,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tyler Schultz (6B6QHT3AN6)";
 				INFOPLIST_FILE = RPAC/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tyschultz.RPAC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "RPAC/RPAC-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -404,12 +405,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tyler Schultz (6B6QHT3AN6)";
 				INFOPLIST_FILE = RPAC/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tyschultz.RPAC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "RPAC/RPAC-Bridging-Header.h";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let mixpanel = Mixpanel.sharedInstanceWithToken("d68f4c0001cb2c5a50b527ad79764baf")
-
         return true
     }
 
@@ -37,6 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
+        let nav = window?.rootViewController as! UINavigationController
+        let buildingTableView = nav.topViewController as! BuildingTableViewController
+        buildingTableView.reloadData()
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 

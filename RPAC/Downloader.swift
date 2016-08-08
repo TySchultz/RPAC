@@ -13,20 +13,25 @@ struct Event {
     var time: String
     var location: String
     var activity: String
+    var building: String
+
 }
 
 class Downloader: NSObject {
     var events : [[Event]]!
     var buildings : [String]!
     
-    func downloadSchedule() -> ([[Event]]!,[String]!) {
+    func downloadSchedule() -> ([[Event]]!,[String]!, Int) {
         events = []
         buildings = []
+        var status = 0
         // Set the page URL we want to download
         let URL = NSURL(string: "https://recsports.osu.edu/schedule/")
         
         // Try downloading it
+        
         do {
+            
             let htmlSource = try String(contentsOfURL: URL!, encoding: NSUTF8StringEncoding)
             
             if let doc = Kanna.HTML(html: htmlSource, encoding: NSUTF8StringEncoding) {
@@ -38,10 +43,10 @@ class Downloader: NSObject {
                     //Title of building
                     if count % 2 == 0 {
                         buildings.append(row.text!)
+                        currentBuilding = row.text!
                     }
                         //Details for building
                     else{
-                        
                         let event = row.xpath("tr")
                         var currentEvents : [Event] = []
                         
@@ -62,7 +67,7 @@ class Downloader: NSObject {
                                     activity = detail.text!
                                 case 2:
                                     location = detail.text!
-                                    currentEvents.append(Event(time: time, location: location, activity: activity))
+                                    currentEvents.append(Event(time: time, location: location, activity: activity, building: currentBuilding ))
                                     index = 0
                                 default:
                                     index = 0
@@ -72,13 +77,13 @@ class Downloader: NSObject {
                             
                         }
                         events.append(currentEvents)
-                        print(events)
                     }
                     count += 1
                 }
             }
         }catch let error as NSError {
             print("Ooops! Something went wrong: \(error)")
+            status = error.code
         }
         
 //        for activity in events {
@@ -89,7 +94,7 @@ class Downloader: NSObject {
 //            }
 //        }
         
-        return (events, buildings)
+        return (events, buildings,status)
     }
     
     func findBasketballEvents(eventList : [[Event]]) -> [Event] {

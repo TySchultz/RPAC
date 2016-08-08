@@ -84,20 +84,10 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/EasyAnimation/EasyAnimation.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Kanna/Kanna.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Mixpanel/Mixpanel.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Realm/Realm.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/RealmSwift/RealmSwift.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SwiftDate/SwiftDate.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SwiftMoment/SwiftMoment.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/EasyAnimation/EasyAnimation.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Kanna/Kanna.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Mixpanel/Mixpanel.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Realm/Realm.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/RealmSwift/RealmSwift.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SwiftDate/SwiftDate.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SwiftMoment/SwiftMoment.framework"
 fi

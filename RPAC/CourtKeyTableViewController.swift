@@ -18,25 +18,22 @@ class CourtKeyTableViewController: UITableViewController {
     var dismissing = false
     
     
-    let COURTNAMES = ["TWD #1-2",
-                      "TWD #3-4",
-                      "UG #1-2",
-                      "UG #3-4",
+    let COURTNAMES = ["TWD",
+                      "UG",
                       "South Gym",
-                      "North Gym"]
+                      "North Gym",
+                      "Court #1-2"]
     
-    let COURTDESCRIPTIONS = ["Bottom floor of the rpac. Near the bottom of the main staircase.",
-                      "Bottom floor of the rpac. The courts near the main weight room.",
-                      "2nd Floor of the rpac. The courts nearest the small cardio section",
-                      "2nd Floor of the rpac. The courts nearest to the scarlet skyway",
-                      "Bottom floor of the rpac. Past the equipment rentals and near the back.",
-                      "Bottom floor of the rpac. Past the equipment rentals. Even further past the south gym. Way back in the corner"]
+    let COURTDESCRIPTIONS = ["Bottom floor of the RPAC. Near the main staircase and cardio canyon.",
+                      "The courts on the upper level of the RPAC.",
+                      "Bottom floor of the rpac. Go past the equipment rentals and locker rooms.",
+                      "Bottom floor of the rpac. Go past the equipment rentals and locker rooms. Even farther back then the south courts",
+                      "This could either be JO North or JO South"]
     
-    @IBOutlet weak var closeLineWidth: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        closeLineWidth.constant = self.view.frame.width
+        self.navigationController?.navigationBarHidden = false
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -44,10 +41,19 @@ class CourtKeyTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        self.navigationController?.navigationBarHidden = false
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBarHidden = true
     }
 
     // MARK: - Table view data source
@@ -63,33 +69,37 @@ class CourtKeyTableViewController: UITableViewController {
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> CourtKeyTableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("CourtKey", forIndexPath: indexPath) as! CourtKeyTableViewCell
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> TableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TableViewCell
         
-        cell.courtName.text = COURTNAMES[indexPath.row]
-        cell.courtDescription.text = COURTDESCRIPTIONS[indexPath.row]
-        
+        cell.activityLabel.text = COURTNAMES[indexPath.row]
+        cell.locationLabel.text = COURTDESCRIPTIONS[indexPath.row]
+        cell.courtImage.image = getImage(indexPath.row)
         return cell
     }
     
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
-        let offset = scrollView.contentOffset.y
-        print(offset)
-        var frame = headerView.frame
-        frame.origin.y = offset
-        headerView.frame = frame
+    
+    func getImage(index : Int) -> UIImage {
         
-        if offset < -120 && !dismissing{
-            dismissing = true
-            self.dismissViewControllerAnimated(true, completion: nil)
+        switch index {
+        case 0:
+            return UIImage(named: "twdAll")!
+        case 1:
+            return UIImage(named: "upAll")!
+        case 2:
+            return UIImage(named: "south")!
+        case 3:
+            return UIImage(named: "north")!
+        case 4:
+            return UIImage(named: "jo")!
+        default:
+            return UIImage(named: "twdAll")!
         }
         
-        if offset < 0 {
-            closeLineWidth.constant =  self.view.frame.width + ((offset/120) * self.view.frame.width)
-        }else{
-            closeLineWidth.constant = self.view.frame.width
-        }
+        return UIImage(named: "twdAll")!
+
     }
+  
     
     @IBAction func closeController(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)
