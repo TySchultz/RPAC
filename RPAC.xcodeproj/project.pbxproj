@@ -145,6 +145,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 10BBE0951D1DC6EB000838D8 /* Build configuration list for PBXNativeTarget "RPAC" */;
 			buildPhases = (
+				1085EFCC1D5ECA8D00CBF632 /* ShellScript */,
 				EEEC29DF8B81B4268C49AF2B /* [CP] Check Pods Manifest.lock */,
 				10BBE07F1D1DC6EB000838D8 /* Sources */,
 				10BBE0801D1DC6EB000838D8 /* Frameworks */,
@@ -209,6 +210,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1085EFCC1D5ECA8D00CBF632 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" df832a526899297ee05725bd936b86f1605c52e9 8bdc2a5d9bf805e85324c61907bc8d9216b669196471b64c9ec4a30e902bea1b";
+		};
 		BD49DB41E535F8A3118AC1D0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

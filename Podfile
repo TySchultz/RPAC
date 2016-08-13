@@ -4,4 +4,6 @@ use_frameworks!
 target 'RPAC' do
 pod 'Kanna'
 pod 'Mixpanel'
+pod 'Fabric'
+pod 'Crashlytics'
 end

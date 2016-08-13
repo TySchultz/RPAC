@@ -8,6 +8,9 @@
 
 import UIKit
 import Mixpanel
+import Fabric
+import Crashlytics
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
+        Fabric.with([Crashlytics.self])
+
         let mixpanel = Mixpanel.sharedInstanceWithToken("d68f4c0001cb2c5a50b527ad79764baf")
         return true
     }

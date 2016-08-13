@@ -257,6 +257,31 @@ class BuildingTableViewController: UITableViewController {
             activityVC.popoverPresentationController?.sourceView = sender
             self.presentViewController(activityVC, animated: true, completion: nil)
     }
+    @IBAction func basketballCourtPressed(sender: UIButton) {
+        let cell = sender.superview?.superview?.superview as! TableViewCell
+        
+//        
+//        let image = UIImageView(frame:  cell.courtImage.convertRect(cell.courtImage.frame, toView: self.view))
+//        image.image = cell.courtImage.image
+//        image.layer.cornerRadius = 8.0
+//        image.layer.masksToBounds = true
+//        image.layer.borderColor = UIColor.blackColor().CGColor
+//        image.layer.borderWidth = 2.0
+//        image.contentMode = .ScaleAspectFit
+//        
+//        
+//        
+//        
+//        self.view.addSubview(image)
+//        let boxSize = self.view.frame.width-40
+//        UIView.animateWithDuration(0.3, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.7, options: .CurveEaseInOut, animations: {
+//            image.frame = CGRectMake(0, 0, boxSize, boxSize)
+//            image.center = CGPointMake(self.view.center.x, self.view.center.y + self.tableView.contentOffset.y)
+//            }) { (Bool) in
+//                
+//        }
+        
+    }
     @IBAction func checkInPressed(sender: TSButton) {
     
         let alert = UIAlertController(title: "Check in!", message: "If RPAC gets enough downloads a check in feature will be created. See how many people are playing from home.\n\n Are you interested?", preferredStyle: .Alert) // 1
